@@ -1,5 +1,6 @@
 import sys
 from siteParser import URLparser
+from filterContent import Filter
 
 
 def main():
@@ -12,8 +13,8 @@ def main():
                 raise Exception("InputError")
             else:
                 print urlname
-        site_sent = URLparser(urlname)
-        site_data = site_sent.site_parser()
+        site_sent = Filter(urlname)
+        site_data = site_sent.filter_data()
         print site_data
     except Exception:
         print "Something went wrong, please check URL inputs"
