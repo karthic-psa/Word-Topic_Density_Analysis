@@ -8,7 +8,7 @@ class Filter(object, URLparser):
 
     stopped_word = stop_filter()
     __cleaned_dataf = {}
-    __cleaned_datas = {}
+    __cleaned_datat = {}
 
     def __init__(self, urllink=None):
         super(Filter, self).__init__()
@@ -51,10 +51,15 @@ class Filter(object, URLparser):
                 except:
                     continue
             # for temp_sent in __sent_data:
-        # print(str_comb)
+        # print(__sent_data)
         if len(str_comb)>0:
-            print(str_comb.split(','))
-        # print(self.__cleaned_dataf)
+            sent_data2 = str_comb.split(',')
+            for topic in sent_data2:
+                if topic in self.__cleaned_datat:
+                    self.__cleaned_datat[topic] += 1
+                else:
+                    self.__cleaned_datat[topic] = 1
+        # print(self.__cleaned_datat)
         return self.__cleaned_dataf, ' '.join(__sent_data)
 
 
@@ -102,7 +107,7 @@ class Filter(object, URLparser):
                             pass
 
 
-
+        print(self.__cleaned_datat)
         # print __cleaned_topice
         return __cleaned_data
 
