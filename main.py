@@ -1,6 +1,5 @@
 import sys
-from siteParser import URLparser
-from filterContent import Filter
+from url_utils.filterContent import Filter
 
 
 def main():
