@@ -17,12 +17,20 @@ class Filter(object, URLparser):
         __tags_cleaned = __remove_tags.sub('', url_data).split()
         __cleaned_data = {}
         for words in __tags_cleaned:
-            if words in self.stopped_word:
+            try:
+                word = words.lower()
+                if word.isalnum():
+                    if word in self.stopped_word:
+                        continue
+                    elif words in __cleaned_data:
+                        __cleaned_data[words] += 1
+                    else:
+                        __cleaned_data[words] = 1
+                else:
+                    continue
+            except:
                 continue
-            elif words in __cleaned_data:
-                __cleaned_data[words] += 1
-            else:
-                __cleaned_data[words] = 1
+        print(__cleaned_data)
         return __cleaned_data
 
 
