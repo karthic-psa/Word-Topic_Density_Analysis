@@ -48,21 +48,3 @@ class LinkedList:
         while (temp):
             print temp.value, temp.data
             temp = temp.next
-
-
-# Driver program
-# llist = LinkedList()
-# new_node = Node(5, 'abc')
-# llist.sortedInsert(new_node)
-# new_node = Node(10, 'ccd')
-# llist.sortedInsert(new_node)
-# new_node = Node(7, 'ddc')
-# llist.sortedInsert(new_node)
-# new_node = Node(7, 'fefef')
-# llist.sortedInsert(new_node)
-# new_node = Node(1, 'fefefefef')
-# llist.sortedInsert(new_node)
-# new_node = Node(9, 'fdaeffaefvfbt')
-# llist.sortedInsert(new_node)
-# print "Create Linked List"
-# llist.printList()

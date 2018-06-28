@@ -19,7 +19,7 @@ def main():
         for i in site_data:
             new_node = Node(site_data[i], i)
             llist.sortedInsert(new_node)
-        llist.printList()
+        # llist.printList()
     except Exception:
         print "Something went wrong, please check URL inputs"
         print "1. InputError: Too many URls or"

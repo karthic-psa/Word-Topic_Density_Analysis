@@ -1,5 +1,5 @@
 import urllib2
-
+from bs4 import BeautifulSoup
 
 class URLparser:
 
@@ -34,8 +34,8 @@ class URLparser:
                 raise Exception('Enter a valid URL for analysis')
 
             page_content = __url_page.read()
-
-            return page_content
+            soup = BeautifulSoup(page_content, 'html.parser')
+            return page_content, soup
 
         except Exception:
             print("Error in input to program >>> Exiting...")
