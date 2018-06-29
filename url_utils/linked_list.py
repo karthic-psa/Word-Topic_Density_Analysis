@@ -37,8 +37,8 @@ class LinkedList:
             current.next = new_node
 
     # Function to insert a new node at the beginning
-    def push(self, new_data):
-        new_node = Node(new_data)
+    def push(self, new_data, new_word):
+        new_node = Node(new_data, new_word)
         new_node.next = self.head
         self.head = new_node
 
@@ -47,9 +47,9 @@ class LinkedList:
         temp = self.head
         temp_arr = []
         cnt = 0
-        while (temp) and cnt<6:
+        while (temp) and cnt < 9:
             temp_arr.append(temp.value)
             # print temp.value, temp.data
             temp = temp.next
-            cnt+=1
+            cnt += 1
         print(temp_arr)

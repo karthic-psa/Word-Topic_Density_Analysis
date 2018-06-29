@@ -4,6 +4,7 @@ from url_utils.linked_list import Node, LinkedList
 
 
 def main():
+
     try:
         if len(sys.argv) == 2:
             urlname = sys.argv[-1]
@@ -15,9 +16,6 @@ def main():
                 print urlname
         site_sent = Filter(urlname)
         site_data = site_sent.filter_data()
-        # print(site_data[0])
-        # temp_data = site_data[0]
-        # print('in main')
         for j in range(len(site_data)):
             temp_dict = site_data[j]
             llist = LinkedList()
@@ -26,7 +24,7 @@ def main():
                 new_node = Node(temp_dict[i], i)
                 llist.sortedInsert(new_node)
             if j == 0:
-                print('\n General Top Words - Density/Frequency: ')
+                print('\n Phrases in page (with weight): ')
                 llist.printList()
             if j == 1:
                 print('\n Common Topics in page (with weight): ')
@@ -35,18 +33,10 @@ def main():
                 print('\n Common Words in page (with weight): ')
                 llist.printList()
             if j == 3:
-                print('\n Phrases in page (with weight): ')
+                print('\n General Top Words - Density/Frequency: Some results are inconsistent here - '
+                      'need to efficiently remove script tags - still testing')
                 llist.printList()
-            # llist.printList()
-            # del llist
-            # del new_node
-        # llist = LinkedList()
-        # for i in temp_data:
-        #     # print(i)
-        #     new_node = Node(temp_data[i], i)
-        #     llist.sortedInsert(new_node)
-        # llist.printList()
-
+                print('\n')
 
     except Exception:
         print "Something went wrong, please check URL inputs"
@@ -54,7 +44,8 @@ def main():
         print "2. Extra whitespace at end of URL"
         print ">>> Exiting program"
 
-        # url_input =
+    finally:
+        print ">>> Exiting program \n"
 
 
 if __name__ == "__main__":

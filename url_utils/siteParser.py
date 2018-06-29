@@ -1,22 +1,23 @@
 import urllib2
+import nltk
+import unicodedata
 from bs4 import BeautifulSoup
+
 
 class URLparser:
 
     def __init__(self, url=None):
         self.__url = url
 
+    # Method to make a request and get response body and parse ir #
     def site_parser(self, *args):
         try:
-            # url_site = ''
-            # print(args[0])
             if len(args) == 1:
                 __url_site = args[0]
             elif self.__url is not None:
                 __url_site = self.__url
             else:
                 raise Exception("Error")
-            # print(url_site)
             head = {
                 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',

@@ -13,6 +13,11 @@ $
 ()
 .
 |
+\
+\n
+\\
+/
+//
 a
 a's
 able
@@ -228,6 +233,8 @@ i
 i'd
 i'll
 i'm
+i\'m
+I\'m
 i've
 ie
 if

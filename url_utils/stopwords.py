@@ -1,3 +1,4 @@
+# A function to make a dictionary of stop words that can be used to filter data #
 def stop_filter():
     fo = open("stopwords.txt", 'r')
     stopw={}
