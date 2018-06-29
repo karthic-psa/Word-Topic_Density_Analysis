@@ -7,7 +7,7 @@ import re
 class Filter(object, URLparser):
 
     stopped_word = stop_filter()
-    importance = {'title_tag': 20,'header_tag': 10, 'common_tag': 1}
+    importance = {'title_tag': 20, 'header_tag': 10, 'common_tag': 1}
     __cleaned_dataf = {}
     __cleaned_datat = {}
 
@@ -24,7 +24,7 @@ class Filter(object, URLparser):
         # print(temp_list)
         for words in temp_list:
             # print('1')
-            if words != 'None':
+            if words != 'None' and words != '' and words != ' ':
                 try:
                     word = words.lower()
                     # print word
@@ -66,15 +66,25 @@ class Filter(object, URLparser):
                         self.__cleaned_datat[topic] += self.importance[content_type]
                     else:
                         self.__cleaned_datat[topic] = self.importance[content_type]
+        else:
+            return
         # print(self.__cleaned_datat)
-        return self.__cleaned_dataf, ' '.join(__sent_data)
-
+        # return self.__cleaned_dataf, ' '.join(__sent_data)
 
     def filter_data(self):
         url_data = super(Filter, self).site_parser(self._urllink)
         # print url_data[0]
-        __remove_tags = re.compile(r'<[^>]+>')
-        __tags_cleaned = __remove_tags.sub('', url_data[0]).split()
+        word_dens_nt = self.filtered_words_nt(url_data[0])
+        self.data_importance(url_data[1])
+        # print ('works')
+        return word_dens_nt, self.__cleaned_datat, self.__cleaned_dataf
+
+    def filtered_words_nt(self, data_got):
+        __remove_tags = re.compile(r'<[^>]*>')
+        __remove_scripts = re.compile(r'<span class=love>.*?<\/span>')
+        __scripts_cleaned = __remove_scripts.sub('', data_got)
+        __tags_cleaned = __remove_tags.sub('', __scripts_cleaned).split()
+        # print(__tags_cleaned)
         # __tags_cleaned = url_data[0].split()
         # print(__tags_cleaned)
         __cleaned_data = {}
@@ -94,11 +104,11 @@ class Filter(object, URLparser):
             except:
                 continue
         # print(__cleaned_data)
-        self.data_importance(url_data[1])
-        return self.__cleaned_datat
+        return __cleaned_data
+        # print(__cleaned_data)
 
     def data_importance(self, data_got):
-        not_needed = ['script', 'style', 'img', 'input', 'option']
+        not_needed = ['script', 'style', 'img', 'input', 'option', 'div']
         for top_tags in data_got.find_all(True):
             if top_tags.name not in not_needed:
                 if top_tags.name and top_tags.name:
@@ -134,10 +144,11 @@ class Filter(object, URLparser):
                         except:
                             pass
 
-
-
-        # print(self.__cleaned_datat)
-        # print __cleaned_topice
+    # def __del__(self):
+    #     class_name = self.__class__.__name__
+    #     print class_name, "destroyed"
+    #     # print(self.__cleaned_datat)
+    #     # print __cleaned_topice
 
 
 

@@ -45,6 +45,11 @@ class LinkedList:
     # Utility function to prit the linked LinkedList
     def printList(self):
         temp = self.head
-        while (temp):
-            print temp.value, temp.data
+        temp_arr = []
+        cnt = 0
+        while (temp) and cnt<6:
+            temp_arr.append(temp.value)
+            # print temp.value, temp.data
             temp = temp.next
+            cnt+=1
+        print(temp_arr)
