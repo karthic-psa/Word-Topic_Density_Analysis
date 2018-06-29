@@ -9,7 +9,7 @@ class URLparser:
     def __init__(self, url=None):
         self.__url = url
 
-    # Method to make a request and get response body and parse ir #
+    # Method to make a request and get response body and parse through the response data #
     def site_parser(self, *args):
         try:
             if len(args) == 1:
