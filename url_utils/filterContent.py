@@ -9,6 +9,7 @@ class Filter(object, URLparser):
     stopped_word = stop_filter()
     importance = {'title_tag': 20, 'header_tag': 10, 'common_tag': 1}
     __cleaned_dataf = {}
+    __cleaned_datap = {}
     __cleaned_datat = {}
 
     def __init__(self, urllink=None):
@@ -66,9 +67,13 @@ class Filter(object, URLparser):
                         self.__cleaned_datat[topic] += self.importance[content_type]
                     else:
                         self.__cleaned_datat[topic] = self.importance[content_type]
-        else:
-            return
-        # print(self.__cleaned_datat)
+        if len(__sent_data)>0:
+            temp_str = ' '.join(__sent_data)
+            if temp_str in self.__cleaned_datap:
+                self.__cleaned_datap[temp_str] += self.importance[content_type]
+            else:
+                self.__cleaned_datap[temp_str] = self.importance[content_type]
+        # print(self.__cleaned_datap)
         # return self.__cleaned_dataf, ' '.join(__sent_data)
 
     def filter_data(self):
@@ -77,11 +82,11 @@ class Filter(object, URLparser):
         word_dens_nt = self.filtered_words_nt(url_data[0])
         self.data_importance(url_data[1])
         # print ('works')
-        return word_dens_nt, self.__cleaned_datat, self.__cleaned_dataf
+        return word_dens_nt, self.__cleaned_datat, self.__cleaned_dataf, self.__cleaned_datap
 
     def filtered_words_nt(self, data_got):
-        __remove_tags = re.compile(r'<[^>]*>')
-        __remove_scripts = re.compile(r'<span class=love>.*?<\/span>')
+        __remove_tags = re.compile(r'<[^>]+>')
+        __remove_scripts = re.compile(r'<span class=love>.*?</span>')
         __scripts_cleaned = __remove_scripts.sub('', data_got)
         __tags_cleaned = __remove_tags.sub('', __scripts_cleaned).split()
         # print(__tags_cleaned)
@@ -108,7 +113,7 @@ class Filter(object, URLparser):
         # print(__cleaned_data)
 
     def data_importance(self, data_got):
-        not_needed = ['script', 'style', 'img', 'input', 'option', 'div']
+        not_needed = ['script', 'style', 'img', 'input', 'option']
         for top_tags in data_got.find_all(True):
             if top_tags.name not in not_needed:
                 if top_tags.name and top_tags.name:

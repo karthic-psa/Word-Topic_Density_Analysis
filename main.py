@@ -29,10 +29,13 @@ def main():
                 print('\n General Top Words - Density/Frequency: ')
                 llist.printList()
             if j == 1:
-                print('\n Common Topics in page (with weight): ' )
+                print('\n Common Topics in page (with weight): ')
                 llist.printList()
             if j == 2:
                 print('\n Common Words in page (with weight): ')
+                llist.printList()
+            if j == 3:
+                print('\n Phrases in page (with weight): ')
                 llist.printList()
             # llist.printList()
             # del llist
