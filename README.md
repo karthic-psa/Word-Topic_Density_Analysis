@@ -32,10 +32,10 @@ In SEO, it’s important to write good content and signal to the search engines 
 ## Comments and Notes ##
 
 1. Just an intial implemetation of the code and structured planned,
-  - [ ] Need to figure out if we can optimize the code in order to achieve better time and memory efficieny, which is critical when the project scales and evolves
-  - [ ] Keep improving the algorithm to better track important topics and words in the page and their usage
-  - [ ] Need to handle lemmatization of words - (did not need it for pages tested; hence did not include it)
-  - [x] Error and exception handling are taken care of to an extent, but can be improved
+    - [ ] Need to figure out if we can optimize the code in order to achieve better time and memory efficieny, which is critical when the project scales and evolves
+    - [ ] Keep improving the algorithm to better track important topics and words in the page and their usage
+    - [ ] Need to handle lemmatization of words - (did not need it for pages tested; hence did not include it)
+    - [x] Error and exception handling are taken care of to an extent, but can be improved
   
 2. Followed Test Driven Development (TDD) while building the views. However, need to perform more robust and automated testing to ensure proper functionality 
-  - [x] Performed unit testing for the features provided in the application and ensured it works properly
+    - [x] Performed unit testing for the features provided in the application and ensured it works properly
