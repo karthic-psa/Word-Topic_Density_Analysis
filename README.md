@@ -25,8 +25,8 @@ In SEO, it’s important to write good content and signal to the search engines 
 1. First, we parse through the URL page got as an input from the user using urllib2 to read all the site data and BeautifulSoup to create a soup object (of the page) that makes parsing the data of the page easier
 2. Create a dictionary of stop words - with the ```stopwords.py``` file using the nltk generic stop words or add words to the stop words file on your own in the ```stopwords.txt``` file, if you want to avoid specific words and topics you are not interested about or find them umipmorant
 3. Next, once we get a response and get our site data and the soup object, we use our methods to filter the data according to our needs and remove any stop words in the data we are parsing
-  - Here is were the code and design is scalable and can be experimented on as per our requirments, by adding different weights to different tags we are going through the HTML content (HTML parse-tree search)
-  - Also you can add, edit or remove tags and weights that you dont want parse
+    - Here is were the code and design is scalable and can be experimented on as per our requirments, by adding different weights to different tags we are going through the HTML content (HTML parse-tree search)
+    - Also you can add, edit or remove tags and weights that you dont want parse
 4. A Linked List has been used to get ordered data of top topics and words ordered by weight and frequency
 
 ## Comments and Notes ##
@@ -37,4 +37,5 @@ In SEO, it’s important to write good content and signal to the search engines 
   - [ ] Need to handle lemmatization of words - (did not need it for pages tested; hence did not include it)
   - [x] Error and exception handling are taken care of to an extent, but can be improved
   
-2. Followed Test Driven Development (TDD) while building the views. However, need to perform more robust and automated testing to ensure proper functionality (Performed unit testing for the features provided in the application and ensured it works properly)
+2. Followed Test Driven Development (TDD) while building the views. However, need to perform more robust and automated testing to ensure proper functionality 
+  - [x] Performed unit testing for the features provided in the application and ensured it works properly
