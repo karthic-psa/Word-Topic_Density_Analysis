@@ -13,7 +13,7 @@ def main():
             if ' ' in urlname:
                 raise Exception("InputError")
             else:
-                print urlname
+                print 'URL given: ' + urlname
         site_sent = Filter(urlname)
         site_data = site_sent.filter_data()
         for j in range(len(site_data)):
@@ -41,7 +41,7 @@ def main():
     except Exception:
         print "Something went wrong, please check URL inputs"
         print "1. InputError: Too many URls or"
-        print "2. Extra whitespace at end of URL"
+        print "2. Maybe extra whitespace at end of URL"
         print ">>> Exiting program"
 
     finally:
